@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "bedrock",
+  "version": "${version}",
+  "name": "BedrockMod",
+  "description": "Bedrock ui and features on Java! \"Coz why not ?\"",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/bedrock/icon.png",
+  "environment": "*",
+  "accessWidener" : "bedrock.accesswidener",
+  "entrypoints": {
+    "client": [
+      "io.github.redrain0o0.bedrock.client.BedrockmodClient"
+    ],
+    "main": [
+      "io.github.redrain0o0.bedrock.Bedrockmod"
+    ]
+  },
+  "mixins": [
+    "bedrock.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
