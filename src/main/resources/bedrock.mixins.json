@@ -6,10 +6,10 @@
   "mixins": [
   ],
   "client": [
-    "client.TitleScreenMixin"
     "client.TitleScreenMixin",
     "client.MinecraftMixin",
     "client.LogoRendererMixin",
+    "client.PauseScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
