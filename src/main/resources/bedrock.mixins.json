@@ -7,6 +7,9 @@
   ],
   "client": [
     "client.TitleScreenMixin"
+    "client.TitleScreenMixin",
+    "client.MinecraftMixin",
+    "client.LogoRendererMixin",
   ],
   "injectors": {
     "defaultRequire": 1

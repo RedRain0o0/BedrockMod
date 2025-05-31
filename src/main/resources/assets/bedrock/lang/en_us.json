@@ -3,6 +3,11 @@
   "menu.options": "Settings",
   "menu.online": "Realms",
   "bedrock.menu.marketplace": "Marketplace"
+  "bedrock.menu.marketplace": "Marketplace",
+  "bedrock.menu.dressing": "Dressing Room",
+  "bedrock.menu.inbox": "Inbox",
+  "bedrock.menu.profile": "Profile",
+  "bedrock.menu.sign_in": "Sign In",
   "bedrock.hud.coords": "Position: %s, %s, %s",
   "bedrock.hud.days": "Days played: %s",
   "bedrock.hud.tooManyDays": "Too many to count!"
