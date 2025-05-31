@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 @Environment(EnvType.CLIENT)
-public class TitleOreUIButton extends AbstractButton {
+public class FlatOreUIButton extends AbstractButton {
     public static final int SMALL_WIDTH = 120;
     public static final int DEFAULT_WIDTH = 150;
     public static final int BIG_WIDTH = 200;
@@ -35,7 +35,7 @@ public class TitleOreUIButton extends AbstractButton {
         return new Builder(component, onPress);
     }
 
-    protected TitleOreUIButton(int i, int j, int k, int l, Component component, OnPress onPress, CreateNarration createNarration) {
+    protected FlatOreUIButton(int i, int j, int k, int l, Component component, OnPress onPress, CreateNarration createNarration) {
         super(i, j, k, l, component);
         this.onPress = onPress;
         this.createNarration = createNarration;
@@ -121,8 +121,8 @@ public class TitleOreUIButton extends AbstractButton {
             return this;
         }
 
-        public TitleOreUIButton build() {
-            TitleOreUIButton oreUIButton = new TitleOreUIButton(this.x, this.y, this.width, this.height, this.message, this.onPress, this.createNarration);
+        public FlatOreUIButton build() {
+            FlatOreUIButton oreUIButton = new FlatOreUIButton(this.x, this.y, this.width, this.height, this.message, this.onPress, this.createNarration);
             oreUIButton.setTooltip(this.tooltip);
             return oreUIButton;
         }
@@ -130,7 +130,7 @@ public class TitleOreUIButton extends AbstractButton {
 
     @Environment(EnvType.CLIENT)
     public interface OnPress {
-        void onPress(TitleOreUIButton oreUIButton);
+        void onPress(FlatOreUIButton oreUIButton);
     }
 
     @Environment(EnvType.CLIENT)
