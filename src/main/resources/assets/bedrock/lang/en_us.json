@@ -3,4 +3,7 @@
   "menu.options": "Settings",
   "menu.online": "Realms",
   "bedrock.menu.marketplace": "Marketplace"
+  "bedrock.hud.coords": "Position: %s, %s, %s",
+  "bedrock.hud.days": "Days played: %s",
+  "bedrock.hud.tooManyDays": "Too many to count!"
 }
