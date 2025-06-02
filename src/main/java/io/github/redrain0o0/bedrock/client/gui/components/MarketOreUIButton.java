@@ -25,6 +25,7 @@ public class MarketOreUIButton extends AbstractButton {
     public static final int DEFAULT_HEIGHT = 20;
     public static final int DEFAULT_SPACING = 8;
     private static final WidgetSprites SPRITES_MARKET = new WidgetSprites(Bedrockmod.createId("widget/button_market"), Bedrockmod.createId("widget/button_market_disabled"), Bedrockmod.createId("widget/button_market_highlighted"));
+    private static final WidgetSprites SPRITES_MARKET_DECO = new WidgetSprites(Bedrockmod.createId("widget/button_market_deco"), Bedrockmod.createId("widget/button_market_disabled_deco"), Bedrockmod.createId("widget/button_market_highlighted_deco"));
     protected static final CreateNarration DEFAULT_NARRATION = (supplier) -> {
         return (MutableComponent)supplier.get();
     };
@@ -49,6 +50,7 @@ public class MarketOreUIButton extends AbstractButton {
         Minecraft minecraft = Minecraft.getInstance();
         guiGraphics.blitSprite(RenderType::guiTextured, SPRITES_MARKET.get(this.active, this.isHoveredOrFocused()), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
         int k = this.isHoveredOrFocused() ? 16777215 : 10526880;
+        guiGraphics.blitSprite(RenderType::guiTextured, SPRITES_MARKET_DECO.get(this.active, this.isHoveredOrFocused()), this.getX() - 17, this.getY() - 2, this.getWidth() + 34, this.getHeight() + 4);
         this.renderString(guiGraphics, minecraft.font, this.isHoveredOrFocused() ? ARGB.color(255, 16777215) : ARGB.color(255, 16761343));
     }
 
