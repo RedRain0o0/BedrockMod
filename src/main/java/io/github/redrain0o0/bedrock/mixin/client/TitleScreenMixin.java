@@ -1,7 +1,11 @@
 package io.github.redrain0o0.bedrock.mixin.client;
 
+import com.mojang.blaze3d.platform.InputConstants;
 import io.github.redrain0o0.bedrock.Bedrockmod;
 import io.github.redrain0o0.bedrock.client.gui.components.*;
+import io.github.redrain0o0.bedrock.client.screens.OreUIConfirmExitScreen;
+import io.github.redrain0o0.bedrock.client.screens.OreUIConfirmScreen;
+import io.github.redrain0o0.bedrock.client.screens.OreUIScreen;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.User;
@@ -31,6 +35,16 @@ public class TitleScreenMixin extends Screen {
         super(component);
     }
 
+    @Override
+    public boolean keyPressed(int i, int j, int k) {
+        if (i == InputConstants.KEY_ESCAPE){
+            Bedrockmod.LOGGER.info("Escape Button Pressed");
+            this.minecraft.setScreen(new OreUIConfirmExitScreen(this, Component.literal("Exit")));
+            return true;
+        }
+        return super.keyPressed(i, j, k);
+    }
+
     @Inject(method = "<init>(ZLnet/minecraft/client/gui/components/LogoRenderer;)V", at = @At("RETURN"))
     public void init(boolean bl, LogoRenderer logoRenderer, CallbackInfo ci) {
         Bedrockmod.LOGGER.info("{}", Minecraft.getInstance().getUser().getType());
@@ -54,7 +68,8 @@ public class TitleScreenMixin extends Screen {
             Bedrockmod.LOGGER.info("Pressed realms button");
         }).bounds(this.width / 2 - 74, l += 32, 148, 30).build())).active = true;
         this.addRenderableWidget(MarketOreUIButton.builder(Component.translatable("bedrock.menu.marketplace").withStyle(Style.EMPTY.withShadowColor(0)), (button) -> {
-            this.minecraft.stop();
+            Bedrockmod.LOGGER.info("Pressed marketplace button");
+            this.minecraft.setScreen(new OreUIScreen(this, Component.translatable("bedrock.menu.marketplace").withStyle(Style.EMPTY.withShadowColor(0))));
         }).bounds(this.width / 2 - 74, l += 32, 148, 30).build());
 
         // Dressing
@@ -102,8 +117,14 @@ public class TitleScreenMixin extends Screen {
         String copyright = "©Mojang AB";
         guiGraphics.fill(0, this.height - 12, this.font.width(copyright) + 3, this.height, 0xAA000000);
         guiGraphics.drawString(this.font, Component.literal(copyright).withStyle(Style.EMPTY.withShadowColor(0)), 1, this.height - 10, 16777215);
-        String username = Minecraft.getInstance().getUser().getName();
-        guiGraphics.fill((((this.width / 4) * 3) - (this.font.width(username) / 2)) + 40, this.height / 2 - 2, (((this.width / 4) * 3) + (this.font.width(username) / 2)) + 42, this.height / 2 + 9, 0x44000000);
-        guiGraphics.drawString(this.font, Component.literal(username).withStyle(Style.EMPTY.withShadowColor(0)), (((this.width / 4) * 3) - (this.font.width(username) / 2)) + 41, this.height / 2, 16777215);
+        //if (Minecraft.getInstance().getUser().getType() != User.Type.MSA) {
+        //    String username = "skinStandardCust";
+        //    guiGraphics.fill((((this.width / 4) * 3) - (this.font.width(username) / 2)) + 40, this.height - 59 - 101, (((this.width / 4) * 3) + (this.font.width(username) / 2)) + 42, this.height - 59 - 90, 0x44000000);
+        //    guiGraphics.drawString(this.font, Component.literal(username).withStyle(Style.EMPTY.withShadowColor(0)), (((this.width / 4) * 3) - (this.font.width(username) / 2)) + 41, this.height - 59 - 99, 16777215);
+        //} else {
+            String username = Minecraft.getInstance().getUser().getName();
+            guiGraphics.fill((((this.width / 4) * 3) - (this.font.width(username) / 2)) + 40, this.height - 59 - 101, (((this.width / 4) * 3) + (this.font.width(username) / 2)) + 42, this.height - 59 - 90, 0x44000000);
+            guiGraphics.drawString(this.font, Component.literal(username).withStyle(Style.EMPTY.withShadowColor(0)), (((this.width / 4) * 3) - (this.font.width(username) / 2)) + 41, this.height - 59 - 99, 16777215);
+        //}
     }
 }

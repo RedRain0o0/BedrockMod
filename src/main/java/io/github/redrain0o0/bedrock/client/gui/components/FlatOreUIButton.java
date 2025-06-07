@@ -19,11 +19,6 @@ import java.util.function.Supplier;
 
 @Environment(EnvType.CLIENT)
 public class FlatOreUIButton extends AbstractButton {
-    public static final int SMALL_WIDTH = 120;
-    public static final int DEFAULT_WIDTH = 150;
-    public static final int BIG_WIDTH = 200;
-    public static final int DEFAULT_HEIGHT = 20;
-    public static final int DEFAULT_SPACING = 8;
     private static final WidgetSprites SPRITES_DEFAULT = new WidgetSprites(Bedrockmod.createId("widget/button"), Bedrockmod.createId("widget/button_disabled"), Bedrockmod.createId("widget/button_highlighted"));
     protected static final CreateNarration DEFAULT_NARRATION = (supplier) -> {
         return (MutableComponent)supplier.get();

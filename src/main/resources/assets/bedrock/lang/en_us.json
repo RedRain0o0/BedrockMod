@@ -16,4 +16,6 @@
   "bedrock.hud.coords": "Position: %s, %s, %s",
   "bedrock.hud.days": "Days played: %s",
   "bedrock.hud.tooManyDays": "Too many to count!"
+  "bedrock.hud.tooManyDays": "Too many to count!",
+  "bedrock.menu.exitMinecraft": "Do you want to exit Minecraft?",
 }
