@@ -3,3 +3,6 @@ accessWidener v1 named
 accessible method net/minecraft/client/gui/screens/TitleScreen createDemoMenuOptions (II)I
 accessible method net/minecraft/client/gui/screens/TitleScreen createNormalMenuOptions (II)I
 accessible class net/minecraft/client/gui/screens/PauseScreen$FeedbackSubScreen
+accessible method net/minecraft/client/Screenshot getFile (Ljava/io/File;)Ljava/io/File;
+accessible field net/minecraft/client/gui/screens/Screen renderables Ljava/util/List;
+accessible method net/minecraft/client/gui/screens/ChatScreen getComponentStyleAt (DD)Lnet/minecraft/network/chat/Style;
