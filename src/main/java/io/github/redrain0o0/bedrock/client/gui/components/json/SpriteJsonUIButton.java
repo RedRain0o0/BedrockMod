@@ -1,43 +1,42 @@
-package io.github.redrain0o0.bedrock.client.gui.components;
+package io.github.redrain0o0.bedrock.client.gui.components.json;
 
 import io.github.redrain0o0.bedrock.Bedrockmod;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-public class SpriteOreUIButton extends FlatOreUIButton {
+public class SpriteJsonUIButton extends JsonUIButton {
     private static final WidgetSprites SPRITES_DEFAULT = new WidgetSprites(Bedrockmod.createId("widget/button"), Bedrockmod.createId("widget/button_disabled"), Bedrockmod.createId("widget/button_highlighted"));
     protected final ResourceLocation sprite;
 
-    SpriteOreUIButton(int i, int j, Component component, ResourceLocation resourceLocation, FlatOreUIButton.OnPress onPress, @Nullable FlatOreUIButton.CreateNarration createNarration) {
+    SpriteJsonUIButton(int i, int j, Component component, ResourceLocation resourceLocation, JsonUIButton.OnPress onPress, @Nullable JsonUIButton.CreateNarration createNarration) {
         super(0, 0, i, j, component, onPress, createNarration == null ? DEFAULT_NARRATION : createNarration);
         this.sprite = resourceLocation;
     }
 
-    public static Builder builder(Component component, FlatOreUIButton.OnPress onPress, boolean bl) {
+    public static Builder builder(Component component, JsonUIButton.OnPress onPress, boolean bl) {
         return new Builder(component, onPress, bl);
     }
 
     @Environment(EnvType.CLIENT)
     public static class Builder {
         private final Component message;
-        private final FlatOreUIButton.OnPress onPress;
+        private final JsonUIButton.OnPress onPress;
         private int width = 150;
         private int height = 20;
         private boolean bool;
         @Nullable
         private ResourceLocation sprite;
         @Nullable
-        FlatOreUIButton.CreateNarration narration;
+        JsonUIButton.CreateNarration narration;
 
-        public Builder(Component component, FlatOreUIButton.OnPress onPress, boolean bl) {
+        public Builder(Component component, JsonUIButton.OnPress onPress, boolean bl) {
             this.message = component;
             this.onPress = onPress;
             this.bool = bl;
@@ -59,12 +58,12 @@ public class SpriteOreUIButton extends FlatOreUIButton {
             return this;
         }
 
-        public Builder narration(FlatOreUIButton.CreateNarration createNarration) {
+        public Builder narration(JsonUIButton.CreateNarration createNarration) {
             this.narration = createNarration;
             return this;
         }
 
-        public SpriteOreUIButton build() {
+        public SpriteJsonUIButton build() {
             if (this.sprite == null) {
                 throw new IllegalStateException("Sprite not set");
             } else {
@@ -74,8 +73,8 @@ public class SpriteOreUIButton extends FlatOreUIButton {
     }
 
     @Environment(EnvType.CLIENT)
-    public static class TextAndIcon extends SpriteOreUIButton {
-        protected TextAndIcon(int i, int j, Component component, ResourceLocation resourceLocation, FlatOreUIButton.OnPress onPress, @Nullable FlatOreUIButton.CreateNarration createNarration) {
+    public static class TextAndIcon extends SpriteJsonUIButton {
+        protected TextAndIcon(int i, int j, Component component, ResourceLocation resourceLocation, JsonUIButton.OnPress onPress, @Nullable JsonUIButton.CreateNarration createNarration) {
             super(i, j, component, resourceLocation, onPress, createNarration);
         }
 

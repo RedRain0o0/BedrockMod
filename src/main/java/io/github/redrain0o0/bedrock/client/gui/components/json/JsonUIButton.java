@@ -1,4 +1,4 @@
-package io.github.redrain0o0.bedrock.client.gui.components;
+package io.github.redrain0o0.bedrock.client.gui.components.json;
 
 import io.github.redrain0o0.bedrock.Bedrockmod;
 import net.fabricmc.api.EnvType;
@@ -18,14 +18,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 @Environment(EnvType.CLIENT)
-public class MarketOreUIButton extends AbstractButton {
-    public static final int SMALL_WIDTH = 120;
-    public static final int DEFAULT_WIDTH = 150;
-    public static final int BIG_WIDTH = 200;
-    public static final int DEFAULT_HEIGHT = 20;
-    public static final int DEFAULT_SPACING = 8;
-    private static final WidgetSprites SPRITES_MARKET = new WidgetSprites(Bedrockmod.createId("widget/button_market"), Bedrockmod.createId("widget/button_market_disabled"), Bedrockmod.createId("widget/button_market_highlighted"));
-    private static final WidgetSprites SPRITES_MARKET_DECO = new WidgetSprites(Bedrockmod.createId("widget/button_market_deco"), Bedrockmod.createId("widget/button_market_disabled_deco"), Bedrockmod.createId("widget/button_market_highlighted_deco"));
+public class JsonUIButton extends AbstractButton {
+    private static final WidgetSprites SPRITES_DEFAULT = new WidgetSprites(Bedrockmod.createId("widget/button"), Bedrockmod.createId("widget/button_disabled"), Bedrockmod.createId("widget/button_highlighted"));
     protected static final CreateNarration DEFAULT_NARRATION = (supplier) -> {
         return (MutableComponent)supplier.get();
     };
@@ -36,7 +30,7 @@ public class MarketOreUIButton extends AbstractButton {
         return new Builder(component, onPress);
     }
 
-    protected MarketOreUIButton(int i, int j, int k, int l, Component component, OnPress onPress, CreateNarration createNarration) {
+    protected JsonUIButton(int i, int j, int k, int l, Component component, OnPress onPress, CreateNarration createNarration) {
         super(i, j, k, l, component);
         this.onPress = onPress;
         this.createNarration = createNarration;
@@ -48,10 +42,9 @@ public class MarketOreUIButton extends AbstractButton {
 
     protected void renderWidget(GuiGraphics guiGraphics, int i, int j, float f) {
         Minecraft minecraft = Minecraft.getInstance();
-        guiGraphics.blitSprite(RenderType::guiTextured, SPRITES_MARKET.get(this.active, this.isHoveredOrFocused()), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
+        guiGraphics.blitSprite(RenderType::guiTextured, SPRITES_DEFAULT.get(this.active, this.isHoveredOrFocused()), this.getX(), this.getY(), this.getWidth(), this.getHeight(), ARGB.white(this.alpha));
         int k = this.isHoveredOrFocused() ? 16777215 : 10526880;
-        guiGraphics.blitSprite(RenderType::guiTextured, SPRITES_MARKET_DECO.get(this.active, this.isHoveredOrFocused()), this.getX() - 17, this.getY() - 2, this.getWidth() + 34, this.getHeight() + 4);
-        this.renderString(guiGraphics, minecraft.font, this.isHoveredOrFocused() ? ARGB.color(255, 16777215) : ARGB.color(255, 16761343));
+        this.renderString(guiGraphics, minecraft.font, this.isHoveredOrFocused() ? ARGB.color(255, 16777215) : ARGB.color(255, 5000268));
     }
 
     protected MutableComponent createNarrationMessage() {
@@ -123,8 +116,8 @@ public class MarketOreUIButton extends AbstractButton {
             return this;
         }
 
-        public MarketOreUIButton build() {
-            MarketOreUIButton oreUIButton = new MarketOreUIButton(this.x, this.y, this.width, this.height, this.message, this.onPress, this.createNarration);
+        public JsonUIButton build() {
+            JsonUIButton oreUIButton = new JsonUIButton(this.x, this.y, this.width, this.height, this.message, this.onPress, this.createNarration);
             oreUIButton.setTooltip(this.tooltip);
             return oreUIButton;
         }
@@ -132,7 +125,7 @@ public class MarketOreUIButton extends AbstractButton {
 
     @Environment(EnvType.CLIENT)
     public interface OnPress {
-        void onPress(MarketOreUIButton oreUIButton);
+        void onPress(JsonUIButton oreUIButton);
     }
 
     @Environment(EnvType.CLIENT)

@@ -1,4 +1,4 @@
-package io.github.redrain0o0.bedrock.client.gui.components;
+package io.github.redrain0o0.bedrock.client.gui.components.json;
 
 import io.github.redrain0o0.bedrock.Bedrockmod;
 import net.fabricmc.api.EnvType;
@@ -14,13 +14,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
 import org.jetbrains.annotations.Nullable;
 
-public class OreUISpriteIconButton extends Button {
+public class JsonUISpriteIconButton extends Button {
     private static final WidgetSprites SPRITES_DEFAULT = new WidgetSprites(Bedrockmod.createId("widget/button"), Bedrockmod.createId("widget/button_disabled"), Bedrockmod.createId("widget/button_highlighted"));
     protected final ResourceLocation sprite;
     protected final int spriteWidth;
     protected final int spriteHeight;
 
-    OreUISpriteIconButton(int i, int j, Component component, int k, int l, ResourceLocation resourceLocation, Button.OnPress onPress, @Nullable Button.CreateNarration createNarration) {
+    JsonUISpriteIconButton(int i, int j, Component component, int k, int l, ResourceLocation resourceLocation, Button.OnPress onPress, @Nullable Button.CreateNarration createNarration) {
         super(0, 0, i, j, component, onPress, createNarration == null ? DEFAULT_NARRATION : createNarration);
         this.spriteWidth = k;
         this.spriteHeight = l;
@@ -81,17 +81,17 @@ public class OreUISpriteIconButton extends Button {
             return this;
         }
 
-        public OreUISpriteIconButton build() {
+        public JsonUISpriteIconButton build() {
             if (this.sprite == null) {
                 throw new IllegalStateException("Sprite not set");
             } else {
-                return (OreUISpriteIconButton)(this.iconOnly ? new CenteredIcon(this.width, this.height, this.message, this.spriteWidth, this.spriteHeight, this.sprite, this.onPress, this.narration) : new OreUISpriteIconButton.TextAndIcon(this.width, this.height, this.message, this.spriteWidth, this.spriteHeight, this.sprite, this.onPress, this.narration));
+                return (JsonUISpriteIconButton)(this.iconOnly ? new CenteredIcon(this.width, this.height, this.message, this.spriteWidth, this.spriteHeight, this.sprite, this.onPress, this.narration) : new JsonUISpriteIconButton.TextAndIcon(this.width, this.height, this.message, this.spriteWidth, this.spriteHeight, this.sprite, this.onPress, this.narration));
             }
         }
     }
 
     @Environment(EnvType.CLIENT)
-    public static class TextAndIcon extends OreUISpriteIconButton {
+    public static class TextAndIcon extends JsonUISpriteIconButton {
         protected TextAndIcon(int i, int j, Component component, int k, int l, ResourceLocation resourceLocation, Button.OnPress onPress, @Nullable Button.CreateNarration createNarration) {
             super(i, j, component, k, l, resourceLocation, onPress, createNarration);
         }
@@ -112,7 +112,7 @@ public class OreUISpriteIconButton extends Button {
     }
 
     @Environment(EnvType.CLIENT)
-    public static class CenteredIcon extends OreUISpriteIconButton {
+    public static class CenteredIcon extends JsonUISpriteIconButton {
         protected CenteredIcon(int i, int j, Component component, int k, int l, ResourceLocation resourceLocation, Button.OnPress onPress, @Nullable Button.CreateNarration createNarration) {
             super(i, j, component, k, l, resourceLocation, onPress, createNarration);
         }
